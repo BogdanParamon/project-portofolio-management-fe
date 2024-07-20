@@ -26,6 +26,7 @@ import { CollaboratorService } from '../../services/collaborator/collaborator.se
 import { TagService } from '../../services/tag/tag.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { environment } from 'src/environments/environment';
 
 interface StateOption {
   label: string;
@@ -47,6 +48,7 @@ interface StateOption {
 })
 export class ProjectTemplateComponent implements OnInit, OnDestroy {
 
+  APP_URL = environment.APP_URL;
   formGroup!: FormGroup;
   stateOptions: StateOption[] = [
       { label: 'Link', value: false },

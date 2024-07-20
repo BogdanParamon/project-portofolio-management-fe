@@ -49,7 +49,7 @@
                           <div class="flex flex-row md:flex-column justify-content-between align-items-left gap-2">
                             <div>
                               <a
-                                href="http://localhost:4200/request-detail/{{item.requestId}}/{{item.project.projectId}}">
+                              [href]="APP_URL + '/request-detail/' + item.requestId + '/' + item.project.projectId">
                                 <div class="text-lg font-medium text-900 mt-2">User
                                   {{item.account.username}} wants to edit project
                                   {{item.project.title}}
@@ -177,7 +177,7 @@
                 <div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3"
                   [ngClass]="{ 'border-top-1 surface-border': !first }">
                   <div class="md:w-10rem relative">
-                    <a href="http://localhost:4200/project-detail/{{item.projectId}}">
+                    <a [href]="APP_URL + '/project-detail/' + item.projectId">
                       <img class="block xl:block mx-auto border-round w-full" [src]="getImageSrc(item)"
                         [alt]="item.title" />
                     </a>
@@ -185,7 +185,7 @@
                   <div class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4">
                     <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">
                       <div>
-                        <a href="http://localhost:4200/project-detail/{{item.projectId}}"
+                        <a [href]="APP_URL + '/project-detail/' + item.projectId"
                           style="text-decoration: none;">
                           <div class="text-lg font-medium text-900 mt-2">{{item.title}}</div>
                         </a>
@@ -222,7 +222,7 @@
                 <div class="p-4 border-1 surface-border surface-card border-round flex flex-column">
                   <div class="surface-50 flex justify-content-center border-round p-3">
                     <div class="relative mx-auto">
-                      <a href="http://localhost:4200/project-detail/{{item.projectId}}">
+                      <a [href]="APP_URL + '/project-detail/' + item.projectId">
                         <img class="border-round w-full" [src]=getImageSrc(item) [alt]="item.title"
                           style="max-width: 300px;" />
                       </a>
@@ -231,7 +231,7 @@
                   <div class="pt-4">
                     <div class="flex flex-row justify-content-between align-items-start gap-2">
                       <div>
-                        <a href="http://localhost:4200/project-detail/{{item.projectId}}">
+                        <a [href]="APP_URL + '/project-detail/' + item.projectId">
                           <div class="text-lg font-medium text-900 mt-2">{{item.title}}</div>
                         </a>
                         <p>

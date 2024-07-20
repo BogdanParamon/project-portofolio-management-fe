@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import { LoginUserRequest, RegisterUserRequest } from '../../models/accounts-models';
+import { environment } from 'src/environments/environment';
 
-const AUTH_API = 'http://localhost:8080/authentication';
+const AUTH_API = environment.API_URL + '/authentication';
 
 @Injectable({
   providedIn: 'root'

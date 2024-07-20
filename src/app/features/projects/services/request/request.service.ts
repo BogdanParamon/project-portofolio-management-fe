@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Request } from '../../models/project-models';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
 
-  private readonly API_URL = 'http://localhost:8080/request/';
+  private readonly API_URL = environment.API_URL + '/request/';
   constructor(
     private readonly httpClient: HttpClient
   ) { }

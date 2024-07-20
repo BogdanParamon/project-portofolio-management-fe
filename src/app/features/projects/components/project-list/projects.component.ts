@@ -11,6 +11,7 @@ import { StorageService } from 'src/app/features/accounts/services/authenticatio
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { AuthenticationService } from 'src/app/features/accounts/services/authentication/authentication.service';
 import { Nullable } from 'primeng/ts-helpers';
+import { environment } from 'src/environments/environment';
 
 
 import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
@@ -24,6 +25,7 @@ import { RequestService } from '../../services/request/request.service';
   providers: [ConfirmationService, MessageService]
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
+  APP_URL = environment.APP_URL;
   data: Project[] = [];
   filteredData: Project[] = [];
   layout: DataView["layout"] = "list";
@@ -50,23 +52,23 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
 
   projectsWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/projects",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/projects",
     deserializer: msg => String(msg.data)
   })
   collaboratorsProjectWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/collaborators/project",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/collaborators/project",
     deserializer: msg => String(msg.data)
   })
   tagsWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/tags",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/tags",
     deserializer: msg => String(msg.data)
   })
   tagsProjectWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/tags/project",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/tags/project",
     deserializer: msg => String(msg.data)
   })
   mediaProjectWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/media/project",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/media/project",
     deserializer: msg => String(msg.data)
   })
 

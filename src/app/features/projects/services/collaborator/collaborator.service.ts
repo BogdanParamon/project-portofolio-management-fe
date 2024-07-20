@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Collaborator, RequestCollaboratorsProjects } from '../../models/project-models';
 import { CollaboratorTransfer } from '../../models/project-models';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CollaboratorService {
 
-  private readonly API_URL = 'http://localhost:8080/collaborator/';
+  private readonly API_URL = environment.API_URL + '/collaborator/';
   constructor(
     private readonly httpClient: HttpClient
   ) { }

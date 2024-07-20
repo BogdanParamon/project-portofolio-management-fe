@@ -45,6 +45,7 @@ import {DataViewModule} from "primeng/dataview";
 import {DialogModule} from "primeng/dialog";
 import { AccountDisplay } from 'src/app/features/accounts/models/accounts-models';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { environment } from 'src/environments/environment';
 
 export interface UsernameSelectEvent{
   value: string;
@@ -63,6 +64,7 @@ export interface UsernameSelectEvent{
 })
 
 export class ProjectEditComponent implements OnInit {
+  APP_URL = environment.APP_URL;
   projectId: string | null = null;
   project!: Project;
   title!: string;
@@ -144,36 +146,36 @@ export class ProjectEditComponent implements OnInit {
 
 
   wsAccountWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/accounts",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/accounts",
     deserializer: msg => String(msg.data)
   })
 
   projectsWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/projects",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/projects",
     deserializer: msg => String(msg.data)
   })
   collaboratorsProjectWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/collaborators/project",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/collaborators/project",
     deserializer: msg => String(msg.data)
   })
   collaboratorsWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/collaborators",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/collaborators",
     deserializer: msg => String(msg.data)
   })
   tagsProjectWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/tags/project",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/tags/project",
     deserializer: msg => String(msg.data)
   })
   tagsWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/tags",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/tags",
     deserializer: msg => String(msg.data)
   })
   linksProjectWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/link/project",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/link/project",
     deserializer: msg => String(msg.data)
   })
   mediaProjectWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/media/project",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/media/project",
     deserializer: msg => String(msg.data)
   })
 
@@ -829,7 +831,7 @@ export class ProjectEditComponent implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigateByUrl("http://localhost:4200/project-detail/" + this.projectId);
+    this.router.navigateByUrl(this.APP_URL + "/project-detail/" + this.projectId);
   }
 
   isAnyLinkFieldEmpty(): boolean {
