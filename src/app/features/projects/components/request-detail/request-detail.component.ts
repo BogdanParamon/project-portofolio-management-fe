@@ -19,6 +19,7 @@ import { AutoCompleteModule} from "primeng/autocomplete";
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FormsModule } from '@angular/forms';
 import { ChipModule } from 'primeng/chip';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-request-detail',
@@ -31,6 +32,7 @@ import { ChipModule } from 'primeng/chip';
 })
 export class RequestDetailComponent implements OnInit, OnDestroy {
 
+  APP_URL = environment.APP_URL;
   requestId: string | null = null
   projectId: string | null = null
   request!: Request

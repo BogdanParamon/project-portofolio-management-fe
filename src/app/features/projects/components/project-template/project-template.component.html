@@ -14,7 +14,7 @@
       <div class="introduction">
         <div class="grid">
           <div class="col-1 center" style="align-items: center;">
-            <a href="http://localhost:4200/add-project">
+            <a [href]="APP_URL + '/add-project'">
               <p-button icon="pi pi-arrow-left" [outlined]="true" severity="contrast" />
             </a>
           </div>
@@ -98,10 +98,10 @@
 
       <div class="card">
         <div class="flex justify-content-end">
-          <a href="http://localhost:4200/add-project">
+          <a [href]="APP_URL + '/add-project'">
           <p-button label="Cancel" class="p-button-secondary" severity="danger" (click)="cancel()"></p-button>
           </a>
-          <a href="http://localhost:4200/add-project">
+          <a [href]="APP_URL + '/add-project'">
           <button id="saveButton" pButton pRipple label="Save" class="p-button-success" type="submit"
             (click)="saveTemplate()">
           </button>

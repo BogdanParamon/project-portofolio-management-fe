@@ -34,6 +34,7 @@ import { CollaboratorTransfer } from '../../models/project-models';
 import { AccountDisplay } from 'src/app/features/accounts/models/accounts-models';
 import { StorageService } from 'src/app/features/accounts/services/authentication/storage.service';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { environment } from 'src/environments/environment';
 
 export interface UsernameSelectEvent{
   value: string;
@@ -57,6 +58,7 @@ export interface UsernameSelectEvent{
 })
 export class ProjectAddComponent implements OnInit, OnDestroy {
 
+  APP_URL = environment.APP_URL;
   media: Media[] = [];
   templateMedia: Media[] = []
   mediaNames: string[] = [];
@@ -121,16 +123,16 @@ export class ProjectAddComponent implements OnInit, OnDestroy {
   wsAccountSubscription: Subscription = new Subscription()
 
   wsAccountWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/accounts",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/accounts",
     deserializer: msg => String(msg.data)
   })
 
   tagsWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/tags",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/tags",
     deserializer: msg => String(msg.data)
   })
   collaboratorsWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/collaborators",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/collaborators",
     deserializer: msg => String(msg.data)
   })
 

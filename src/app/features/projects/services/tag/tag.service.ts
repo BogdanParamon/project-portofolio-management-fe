@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RequestTagProject, Tag } from '../../models/project-models';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TagService {
 
-  private readonly API_URL = 'http://localhost:8080/tag/';
+  private readonly API_URL = environment.API_URL + '/tag/';
   constructor(
     private readonly httpClient: HttpClient
   ) { }

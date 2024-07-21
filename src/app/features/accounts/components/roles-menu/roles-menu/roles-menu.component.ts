@@ -15,6 +15,7 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { DialogModule } from 'primeng/dialog';
 import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-roles-menu',
@@ -52,12 +53,12 @@ export class RolesMenuComponent {
   wsAccountsProjectsSubscription: Subscription = new Subscription();
 
   accountsWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/accounts",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/accounts",
     deserializer: msg => String(msg.data)
   });
 
   acountsProjectsWebSocket: WebSocketSubject<string> = webSocket({
-    url: "ws://localhost:8080/topic/accounts/project",
+    url: environment.API_URL.replace('http', 'ws') + "/topic/accounts/project",
     deserializer: msg => String(msg.data)
   });
 

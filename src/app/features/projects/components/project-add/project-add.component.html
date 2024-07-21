@@ -17,7 +17,7 @@
 
           <div class="col-12 flex" style="display: flex; align-items: center;">
             <div>
-              <a href="http://localhost:4200">
+              <a [href] = APP_URL>
                 <p-button icon="pi pi-arrow-left" [outlined]="true" severity="contrast"></p-button>
               </a>
             </div>
@@ -59,7 +59,7 @@
             inputId="float-label" />
           <label>Select a Template</label>
         </p-floatLabel>
-        <a href="http://localhost:4200/template">
+        <a [href]="APP_URL + '/template'">
           <p-button id="addtemplate" label="Add Template" />
         </a>
       </div>
@@ -456,7 +456,7 @@
         </div>
           <div class="card">
         <div class="flex justify-content-end">
-          <a href="http://localhost:4200">
+          <a [href]=APP_URL>
           <p-button label="Cancel" class="p-button-secondary" severity="danger" (click)="cancel()"></p-button>
           </a>
           <button id="saveButton" pButton pRipple label="Save" class="p-button-success" type="submit"
